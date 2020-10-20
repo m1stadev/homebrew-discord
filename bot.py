@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 from discord.ext import commands
+import aiohttp
 import discord
-import requests
 import sys
 
 client = commands.Bot(command_prefix='hb!', help_command=None)
@@ -38,8 +38,10 @@ async def on_guild_remove(guild):
 @client.command()
 @commands.guild_only()
 async def search(ctx, package):
-    api_info = requests.get('https://formulae.brew.sh/api/formula.json')
-    data = api_info.json()
+    async with aiohttp.ClientSession() as session:
+        async with session.get('https://formulae.brew.sh/api/formula.json') as api_info:
+            data = await api_info.json()
+
     for i in range(0, len(data)):
         if data[i]['name'] == package.lower() or data[i]['full_name'] == package.lower():
             package_location = i
