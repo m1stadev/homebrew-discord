@@ -6,6 +6,7 @@ import requests
 import sys
 
 client = commands.Bot(command_prefix='hb!', help_command=None)
+client_id = 'CLIENT_ID'
 
 def bot_token(token):
     try:
@@ -61,7 +62,7 @@ async def search(ctx, package):
 @client.command()
 @commands.guild_only()
 async def invite(ctx):
-    embed = discord.Embed(color=0xf7b64f, title='Invite', description='Invite me to your server using [this](https://discord.com/oauth2/authorize?client_id=767889324431376385&scope=bot&permissions=3072) link!')
+    embed = discord.Embed(color=0xf7b64f, title='Invite', description=f'Invite me to your server using [this](https://discord.com/oauth2/authorize?client_id={client_id}&scope=bot&permissions=3072) link!')
     embed.set_footer(text=ctx.message.author.name, icon_url=ctx.message.author.avatar_url_as(static_format='png'))
     await ctx.send(embed=embed)
 

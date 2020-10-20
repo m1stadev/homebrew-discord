@@ -10,7 +10,9 @@ To locally host, just follow these steps:
 
 2. Create a file named `token.txt`, that contains **only** your bot token.
 
-3. Run `bot.py`:
+3. Open `bot.py` and change the value of `client_id` to your bot's client ID
+
+4. Run `bot.py`:
 `python3 bot.py`
 
 ## Live Demo
