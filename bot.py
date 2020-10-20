@@ -25,7 +25,7 @@ def list_to_str(lst):
 
 @client.event
 async def on_ready():
-    await client.change_presence(activity=discord.Game(name=f'Prefix: {client.command_prefix}'))
+    await client.change_presence(activity=discord.Game(name=f'Prefix: {client.command_prefix} | In {len(client.guilds)} servers'))
     print('Bot is now online.')
 
 @client.command()
