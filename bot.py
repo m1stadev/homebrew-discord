@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 from discord.ext import commands
-import asyncio
 import discord
 import requests
 import sys
@@ -23,13 +22,18 @@ def list_to_str(lst):
 
     return list_str[:-2]
 
-
 @client.event
 async def on_ready():
     print('Bot is now online.')
-    while True:
-        await client.change_presence(activity=discord.Game(name=f'Prefix: {client.command_prefix} | In {len(client.guilds)} servers'))
-        await asyncio.sleep(30)
+    await client.change_presence(activity=discord.Game(name=f'Prefix: {client.command_prefix} | In {len(client.guilds)} servers'))
+
+@client.event
+async def on_guild_join(guild):
+    await client.change_presence(activity=discord.Game(name=f'Prefix: {client.command_prefix} | In {len(client.guilds)} servers'))
+
+@client.event
+async def on_guild_remove(guild):
+    await client.change_presence(activity=discord.Game(name=f'Prefix: {client.command_prefix} | In {len(client.guilds)} servers'))
 
 @client.command()
 @commands.guild_only()
