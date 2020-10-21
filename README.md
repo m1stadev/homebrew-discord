@@ -1,8 +1,6 @@
 # Homebrew-Discord
 Homebrew-Discord is a bot I wrote out of boredom to fetch information on packages using the [Homebrew](https://brew.sh/) API.
 
-Its current purpose is to downgrade devices (vulnerable to [checkm8](https://github.com/axi0mX/ipwndfu)) to previous iOS versions. However, there are other possible uses for this tool as well.
-
 ## Setup
 To locally host, just follow these steps:
 1. Install the required libraries:
