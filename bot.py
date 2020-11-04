@@ -77,10 +77,18 @@ async def invite(ctx):
 
 @client.command()
 @commands.guild_only()
+async def ping(ctx):
+    embed = discord.Embed(title='**Pong!**', description=f'Ping: `{round(client.latency * 1000)}ms`')
+    embed.set_footer(text=f'{ctx.message.author.name}', icon_url=ctx.message.author.avatar_url_as(static_format='png'))
+    await ctx.send(embed=embed)
+
+@client.command()
+@commands.guild_only()
 async def help(ctx):
     embed = discord.Embed(color=0xf7b64f, title='Commands')
     embed.add_field(name=f'`{client.command_prefix}help`', value='Show this message.', inline=True)
     embed.add_field(name=f'`{client.command_prefix}invite`', value='Get the invite link for this bot.', inline=True)
+    embed.add_field(name=f'`{client.command_prefix}ping`', value='Get the latency of this bot.', inline=True)
     embed.add_field(name=f'`{client.command_prefix}search <package>`', value='Search for a package.', inline=True)
     embed.set_footer(text=ctx.message.author.name, icon_url=ctx.message.author.avatar_url_as(static_format='png'))
     await ctx.send(embed=embed)
